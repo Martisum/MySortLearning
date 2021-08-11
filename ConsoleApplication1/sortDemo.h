@@ -75,5 +75,5 @@ void ShellSort(vector<int>& data) {
 
 void merge(vector<int>& data, int l, int mid, int r) {
 	register int l_length = mid - l, r_length = r - mid;
-
+	vector<int> l_side, r_side;
 }
