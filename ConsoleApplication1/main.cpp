@@ -19,7 +19,7 @@ int main() {
 		d.push_back(tmp);
 	}
 
-	InsertSort(d,2);
+	ShellSort(d);
 	/*for (int start = 1; start < n; start++) {
 		register int tmp = d[start], p;
 		for (p = start - 1; d[p] > tmp && p >= 0; p--) {}
