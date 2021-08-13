@@ -76,4 +76,32 @@ void ShellSort(vector<int>& data) {
 void merge(vector<int>& data, int l, int mid, int r) {
 	register int l_length = mid - l, r_length = r - mid;
 	vector<int> l_side, r_side;
+	//vector<int>* l_side = new vector<int>[mid - l + 1];
+	
+
+	for (int i = 0; i <= l_length; i++)
+		l_side.push_back(data[l + i]);
+	for (int i = 0; i < r_length; i++)  //这里还需要取到mid，比l_side多了一个元素
+		r_side.push_back(data[mid + i + 1]);
+
+	register int pl = 0, pr = 0, p = 0;
+	while (pl <= l_side.size() && pr < r_side.size()) {
+		if (l_side[pl] < r_side[pr])
+			data[p] = l_side[pl++];
+		else
+			data[p] = r_side[pr++];
+
+		p++;
+	}
+
+	while (pl < l_side.size()) {
+		data[p] = l_side[pl];
+		p++; pl++;
+	}
+	while (pr < r_side.size()) {
+		data[p] = r_side[pr];
+		p++; pr++;
+	}
+
+	return;
 }

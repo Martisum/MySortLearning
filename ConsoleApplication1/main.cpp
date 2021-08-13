@@ -12,14 +12,14 @@ int main() {
 	ifstream fin("input.txt");
 	vector<int> d;
 	int n = 0;
-	fin >> n;
+	cin >> n;
 	for (int i = 0; i < n; i++) {
 		register int tmp;
-		fin >> tmp;
+		cin >> tmp;
 		d.push_back(tmp);
 	}
 
-	ShellSort(d);
+	merge(d, 0, (d.size() - 1) / 2, d.size() - 1);
 	/*for (int start = 1; start < n; start++) {
 		register int tmp = d[start], p;
 		for (p = start - 1; d[p] > tmp && p >= 0; p--) {}
