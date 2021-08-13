@@ -19,7 +19,8 @@ int main() {
 		d.push_back(tmp);
 	}
 
-	merge(d, 0, (d.size() - 1) / 2, d.size() - 1);
+	mergeSort(d, 0, n - 1);
+	//merge(d, 0, (n - 1) / 2, n - 1);
 	/*for (int start = 1; start < n; start++) {
 		register int tmp = d[start], p;
 		for (p = start - 1; d[p] > tmp && p >= 0; p--) {}

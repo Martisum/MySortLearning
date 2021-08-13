@@ -74,18 +74,19 @@ void ShellSort(vector<int>& data) {
 //}
 
 void merge(vector<int>& data, int l, int mid, int r) {
-	register int l_length = mid - l, r_length = r - mid;
+	//这里的data数组不是一个切出来的数组，它就是原数组！
+	register int l_length = mid - l + 1, r_length = r - mid;
 	vector<int> l_side, r_side;
 	//vector<int>* l_side = new vector<int>[mid - l + 1];
-	
 
-	for (int i = 0; i <= l_length; i++)
+
+	for (int i = 0; i < l_length; i++)
 		l_side.push_back(data[l + i]);
 	for (int i = 0; i < r_length; i++)  //这里还需要取到mid，比l_side多了一个元素
 		r_side.push_back(data[mid + i + 1]);
 
-	register int pl = 0, pr = 0, p = 0;
-	while (pl <= l_side.size() && pr < r_side.size()) {
+	register int pl = 0, pr = 0, p = l;
+	while (pl < l_side.size() && pr < r_side.size()) {
 		if (l_side[pl] < r_side[pr])
 			data[p] = l_side[pl++];
 		else
@@ -103,5 +104,16 @@ void merge(vector<int>& data, int l, int mid, int r) {
 		p++; pr++;
 	}
 
+	return;
+}
+
+void mergeSort(vector<int>& data, int l, int r) {
+	//至少有三个元素才可以mergeSort，两个元素就直接看出来了
+	if (l  < r) {
+		register int mid = (l + r) / 2;
+		mergeSort(data, l, mid);
+		mergeSort(data, mid + 1, r);
+		merge(data, l, mid, r);
+	}
 	return;
 }
